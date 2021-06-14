@@ -9,8 +9,11 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebApplication2.Models;
-
 namespace WebApplication2.Controllers
+//______________________CODE ATTRIBUTION_____________________________
+//REGISTER AND LOG IN 
+//PRE GENERATED TEMPLATE MADE BY VISUAL STUDIO 2019
+//______________________END OF CODE ATTRIBUTION______________________
 {
     [Authorize]
     public class AccountController : Controller
