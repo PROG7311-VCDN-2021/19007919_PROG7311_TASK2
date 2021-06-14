@@ -1,0 +1,81 @@
+﻿@model IEnumerable<WebApplication2.Models.PRODUCT>
+    @using WebApplication2.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<br/>
+<br/>
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+    
+{
+
+
+    <b> Search Option: </b>@Html.RadioButton("option", "Name") <label>Name</label> @Html.RadioButton("option", "Category") <label>Category</label>
+    @Html.RadioButton("option", "Code")<label>Code</label> @Html.TextBox("search")
+    <input type="submit"
+           name="submit"
+           value="Search" class="btn btn-primary"/>
+}
+<br>
+<br>
+
+
+
+
+
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>
+            Product Code
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Price in ZAR
+        </th>
+        <th></th>
+    </tr>
+
+
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRODUCT_CODE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRODUCT_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRODUCT_CATEGORY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRODUCT_DESCRIPTION)
+            </td>
+            <td>
+               R @Html.DisplayFor(modelItem => item.PRODUCT_PRICE)
+            </td>
+            <td>
+
+                <a href="@Url.Action("Buy", "Cart", new { id = item.PRODUCT_CODE }) "class="btn btn-primary">Add to Cart</a>
+                
+
+
+
+            </td>
+        </tr>
+    }
+
+</table>

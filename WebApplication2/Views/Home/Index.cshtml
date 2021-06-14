@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+      Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<br>
+<br>
+<div>
+    <div>
+        <h1> Welcome to Acme Inc! </h1>
+    </div>
+    <br>
+    <div>
+        <h5 class="card-title">This serves as the Prototype for our new E-Commerce Platform</h5>
+        <p class="card-text">To access the shop, click "Online shop" on the navbar above.</p>
+        <a href="@Url.Action("Index", "Product")" class="btn btn-primary">Or click here</a>
+    </div>
+
+    <p class="card-text">Please note, you must be logged in to place an order.</p>
+</div>

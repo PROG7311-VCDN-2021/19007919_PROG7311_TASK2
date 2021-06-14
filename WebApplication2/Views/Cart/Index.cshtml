@@ -1,0 +1,57 @@
+﻿@model WebApplication2.Models.productLogicModel
+@using WebApplication2.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cart</title>
+</head>
+<body>
+
+    <h3>Cart Page</h3>
+    <table class="table table-bordered table-responsive table-hover" cellpadding="3" cellspacing="3" border="1">
+        <tr>
+            <th> Option </th>
+            <th> Product Code </th>
+            <th> Name </th>
+            <th> Price </th>
+            <th> Quantity </th>
+            <th> Sub Total </th>
+        </tr>
+        @foreach (item item in (List<item>)Session["cart"])
+        {
+            <tr>
+                <td><a href="@Url.Action("Delete", "Cart", new { id = item.Product.PRODUCT_CODE })"> Delete </a></td>
+                <td> @item.Product.PRODUCT_CODE </td>
+                <td> @item.Product.PRODUCT_NAME </td>
+                <td> R @item.Product.PRODUCT_PRICE </td>
+                <td> @item.Quantity </td>
+                <td> R @(item.Product.PRODUCT_PRICE * item.Quantity) </td>
+            </tr>
+        }
+        <tr>
+            <td align="right" colspan="5"> Grand Total </td>
+            <td>
+                R
+                @{
+                    List<item> cart = (List<item>)Session["cart"];
+                    var total = cart.Sum(item => item.Product.PRODUCT_PRICE * item.Quantity);
+                }
+
+                @total
+            </td>
+        </tr>
+    </table>
+    <br>
+    <a href="@Url.Action("Index", "Product")" class="btn btn-primary">Continue Shopping</a>
+    <br>
+    <br>
+    <a href="@Url.Action("Checkout", "Cart")" class="btn btn-success">Check Out</a>
+
+</body>
+</html>
